@@ -9,20 +9,24 @@ $(document).ready(function() {
 
     // Loops through timeArr to dynamically create display
     timeArr.forEach(element => {
-        // div row containing each time block
+        // create div row containing each time block
         var newRow = $("<div>").addClass("row");
 
-        // div for column with time
-        var col1 = $("<div>").addClass("col-sm-2 time-block");
+        // create column div for first column with time (2 blocks)
+        var col1 = $("<div>").addClass("col-sm-2 time-block hour");
         col1.text(element);
 
+        // create column div for second column with text area (9 blocks)
+        var col2 = $("<textarea>").addClass("col-sm-9 past row");
 
-
-        // var col2 = $("<textarea>").addClass("col-sm-9 time-block");
-        // var col3 = $("<div>").addClass("col-sm-1 time-block");
+        // create column div for third column with save button (1 block)
+        var col3 = $("<button>").addClass("col-sm-1 saveBtn");
+        col3.attr("type", "submit");
 
 
         newRow.append(col1);
+        newRow.append(col2);
+        newRow.append(col3);
         mainDisplay.append(newRow);
 
 
