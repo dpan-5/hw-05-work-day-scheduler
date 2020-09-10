@@ -65,8 +65,13 @@ $(document).ready(function() {
             todo: $("#col-text-"+$(this).val()).val()
         }
         // pushes newly created todoObject to todoList array, then sets the todoList array to localStorage
-        todoList.push(todoObject);
-        localStorage.setItem("todoList", JSON.stringify(todoList));
+        // if(todoList.filter(element => element.hour == $(this).val()).length != 1){
+            todoList.push(todoObject);
+            localStorage.setItem("todoList", JSON.stringify(todoList));
+        // }
+        // else {
+            
+        // }
     }
 
     // If local storage contains data, this retrieves the data and displays it
@@ -77,16 +82,23 @@ $(document).ready(function() {
 
             todoList.forEach((element, index) => {
                 $("#col-text-"+(todoList[index].hour)).text(todoList[index].todo);
-                console.log(element, index+9);
             });
         }
     }
 
     renderToDoList();
 
+    // Event listener for triple click, will ask user if they want to delete todo
     $(".text-column").on('click', function(event) {
         if (event.detail === 3) {
-            confirm("Are you sure you want to delete this item");
+            if(confirm("Are you sure you want to delete this item?")) {
+                var columnToDelete = $(this).attr("id");
+                todoList = $.grep(todoList, function(e) {
+                    return e.hour != columnToDelete.slice(9);
+                })
+                localStorage.setItem("todoList", JSON.stringify(todoList));
+                $(this).val("");
+            }
         }
     });
 });
