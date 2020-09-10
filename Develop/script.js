@@ -65,13 +65,8 @@ $(document).ready(function() {
             todo: $("#col-text-"+$(this).val()).val()
         }
         // pushes newly created todoObject to todoList array, then sets the todoList array to localStorage
-        // if(todoList.filter(element => element.hour == $(this).val()).length != 1){
             todoList.push(todoObject);
             localStorage.setItem("todoList", JSON.stringify(todoList));
-        // }
-        // else {
-            
-        // }
     }
 
     // If local storage contains data, this retrieves the data and displays it
