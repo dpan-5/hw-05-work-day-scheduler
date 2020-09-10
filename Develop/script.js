@@ -8,6 +8,7 @@ $(document).ready(function() {
     // Assigning container div to variable, to grab and append to at the end of loop below
     var mainDisplay = $("#displayContent");
 
+    // Creating an empty array to store user input for todos
     var todoList = [];
 
     // Loops through timeArr to dynamically create display
@@ -63,10 +64,9 @@ $(document).ready(function() {
             hour: $(this).val(),
             todo: $("#col-text-"+$(this).val()).val()
         }
-
+        // pushes newly created todoObject to todoList array, then sets the todoList array to localStorage
         todoList.push(todoObject);
         localStorage.setItem("todoList", JSON.stringify(todoList));
-        console.log(todoList);
     }
 
     // If local storage contains data, this retrieves the data and displays it
