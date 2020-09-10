@@ -6,9 +6,9 @@ $(document).ready(function() {
     const timeArr = ["9", "10", "11", "12", "13", "14", "15", "16", "17"];
 
     // Assigning container div to variable, to grab and append to at the end of loop below
-    let mainDisplay = $("#displayContent");
+    var mainDisplay = $("#displayContent");
 
-    var newBreakPoint;
+    var todoList = [];
 
     // Loops through timeArr to dynamically create display
     timeArr.forEach((element, index) => {
@@ -54,11 +54,33 @@ $(document).ready(function() {
         mainDisplay.append(newRow);
     });
 
+    // Adding event listener to save buttons
+    $("button").on("click", saveToLocalStorage);
 
-    $("button").on("click", function() {
-        $("#col-text-"+$(this).val()).text("hi");
-    });
+    // This is called whenever a button is clicked, storing the value of user inputs to local storage
+    function saveToLocalStorage() {
+        var todoObject = {
+            hour: $(this).val(),
+            todo: $("#col-text-"+$(this).val()).val()
+        }
 
+        todoList.push(todoObject);
+        localStorage.setItem("todoList", JSON.stringify(todoList));
+        console.log(todoList);
+    }
 
+    // If local storage contains data, this retrieves the data and displays it
+    function renderToDoList() {
+        var storedTodos = JSON.parse(localStorage.getItem("todoList"));
+        if(storedTodos !== null) {
+            todoList = storedTodos;
+
+            todoList.forEach((element, index) => {
+                $("#col-text-"+(index+9)).text(todoList[index].todo);
+            });
+        }
+    }
+
+    renderToDoList();
 });
 
