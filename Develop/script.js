@@ -29,9 +29,9 @@ $(document).ready(function() {
             }
 
         // COLUMN 2: create column div for second column with text area (9 blocks)
-        var col2 = $("<textarea>").addClass("col-sm-9 row");
-
-            // sets div class to display present and captures index at which the element is present, to be used in a later loop
+        var col2 = $("<textarea>").addClass("col-sm-9 row text-column");
+        col2.attr("id", "col-text-"+element);
+            // checks current hour and sets column class to past, present, or future based on the time
             if(element == moment().hour()) {
                 col2.addClass("present");
             }
@@ -44,6 +44,7 @@ $(document).ready(function() {
 
         // COLUMN 3: create column div for third column with save button (1 block)
         var col3 = $("<button type='submit'>").addClass("col-sm-1 saveBtn");
+        col3.attr("value", element);
         col3.append($("<i class='fas fa-save'>"));
 
         // appending newly created columns to newly created row, and then appending row to container div
@@ -52,5 +53,12 @@ $(document).ready(function() {
         newRow.append(col3);
         mainDisplay.append(newRow);
     });
+
+
+    $("button").on("click", function() {
+        $("#col-text-"+$(this).val()).text("hi");
+    });
+
+
 });
 
