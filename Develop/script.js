@@ -76,11 +76,18 @@ $(document).ready(function() {
             todoList = storedTodos;
 
             todoList.forEach((element, index) => {
-                $("#col-text-"+(index+9)).text(todoList[index].todo);
+                $("#col-text-"+(todoList[index].hour)).text(todoList[index].todo);
+                console.log(element, index+9);
             });
         }
     }
 
     renderToDoList();
+
+    $(".text-column").on('click', function(event) {
+        if (event.detail === 3) {
+            confirm("Are you sure you want to delete this item");
+        }
+    });
 });
 
