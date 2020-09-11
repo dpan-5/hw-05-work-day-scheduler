@@ -4,20 +4,22 @@
 
 This is a work day calendar application that allows the user to save events for each hour of the day, featuring dynamically updated HTML and CSS powered by jQuery.
 
-## JavaScript Web Quiz Screenshot
-![Image of Screenshot](./assets/images/coding_screenshot.png)
+## Work Day Scheduler Demo
+![Image of Screenshot](./assets/scheduler_demo.gif)
 
 ## Github Pages Link
 
-You can view the deployed site at https://dpan-5.github.io/hw-04-web-quiz/
+You can view the deployed site at https://dpan-5.github.io/hw-05-work-day-scheduler/
 
 ## Functionality
 
-When the "Start Quiz" button is clicked, you are presented with a series of questions, and a timer begins counting down. Answer questions correctly to score points.
+When a user opens the application, the current date is displayed at the top. 
 
-Wrong answers will deduct 10 seconds off the timer. If the timer runs out, the quiz ends.
+Time blocks are also displayed in color-coded fashion, indicating whether or not the time block is past, is present, or future. 
 
-At the end of the quiz, you will be prompted to enter your initials and a highscore page is displayed.
+Users can click on a time block to enter an input and save the input by clicking the save button. The saved events will persist in the user's local storage and be displayed. 
+
+I've also added additional functionality so that by triple-clicking a time block, a user is given a confirmation to delete the task.
 
 ## License
 
