@@ -5,7 +5,7 @@
 This is a work day calendar application that allows the user to save events for each hour of the day, featuring dynamically updated HTML and CSS powered by jQuery.
 
 ## Work Day Scheduler Demo
-![Image of Screenshot](./assets/scheduler_demo.gif)
+![Image of Screenshot](./Assets/scheduler_demo.gif)
 
 ## Github Pages Link
 
